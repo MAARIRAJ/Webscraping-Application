@@ -1,0 +1,400 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            padding: 0.5rem 2rem;
+            background-color: rgba(10, 10, 10, 0.876);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00a8ff;
+        }
+
+        .header {
+            position: relative;
+            color: white;
+            text-align: center;
+            background: -moz-linear-gradient(45deg, #02e1ba 0%, #26c9f2 29%, #d911f2 66%, #ffa079 100%);
+            background: -webkit-linear-gradient(45deg, #02e1ba 0%, #26c9f2 29%, #d911f2 66%, #ffa079 100%);
+            background: linear-gradient(45deg, #02e1ba 0%, #26c9f2 29%, #d911f2 66%, #ffa079 100%);
+            background-size: 400% 400%;
+            -webkit-animation: Gradient 15s ease infinite;
+            -moz-animation: Gradient 15s ease infinite;
+            animation: Gradient 15s ease infinite;
+            padding: 60px 0 100px;
+        }
+
+        .header-content {
+            z-index: 1;
+            position: relative;
+        }
+
+        .header .btn {
+            margin-top: 20px;
+        }
+
+        .instructions {
+            padding: 25px 0 50px;
+            text-align: center;
+        }
+
+        .instructions img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .instructions h4 {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .instructions p {
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: #2f2f2f;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+        }
+
+        .footer .nav-links a {
+            margin: 0 10px;
+        }
+
+        .footer .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        @-webkit-keyframes Gradient {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        @-moz-keyframes Gradient {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        @keyframes Gradient {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">ScrapePro</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">SERVICES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">WHY US</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">TEAM</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<section class="header">
+    <div class="container header-content">
+        <h1 class="display-4">Empowering Data Scientists with Automated Extraction</h1>
+        <p class="lead">DataScrapeHub simplifies web data extraction for data scientists, analysts, and researchers. Our platform offers automated tools to gather and organize data from various online sources, enhancing analytical workflows and enabling informed decision-making. Join us to streamline your data extraction process and unlock valuable insights efficiently.</p>
+        <a href="#" class="btn btn-light btn-lg">Read More</a>
+        <a href="#" class="btn btn-outline-light btn-lg">Contact Us</a>
+    </div>
+</section>
+
+<section class="instructions">
+    <div class="container">
+        <h2 class="display-4">How to Scrape a Webpage into Excel</h2>
+        <p class="lead">Follow these simple steps to scrape a webpage and convert the data into an Excel file:</p>
+        <div class="row flex-column mt-5">
+            <div class="col-12 text-center mb-4">
+                <img src="{% static 'scraper/images/html.jpg' %}" alt="Upload HTML">
+                <h4>Step 1: Upload Your HTML Files</h4>
+                <p>Upload the HTML files you want to convert.</p>
+            </div>
+            <div class="col-12 text-center mb-4">
+                <img src="{% static 'scraper/images/Web-Scraping.jpg' %}" alt="Scrape">
+                <h4>Step 2: Press the "Scrape" Button</h4>
+                <p>Our tool will automatically extract the data.</p>
+            </div>
+            <div class="col-12 text-center">
+                <img src="{% static 'scraper/images/downloadexcel.png' %}" alt="Download Excel">
+                <h4>Step 3: Download the Converted Files</h4>
+                <p>Click the download link to get your Excel file.</p>
+            </div>
+        </div>
+        <a href="{% url 'index' %}" class="btn btn-primary btn-lg mt-4">Scrape Now!</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container text-center">
+        <div class="social-icons mb-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="nav-links mb-4">
+            <a href="#">Home</a> |
+            <a href="#">Products</a> |
+            <a href="#">Free Support</a> |
+            <a href="#">Free Consulting</a> |
+            <a href="#">Blog</a> |
+            <a href="#">Websites</a> |
+            <a href="#">About</a>
+        </div>
+        <div class="copyright">
+            © Mariraj Owned All Rights Reserved. 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Add Bootstrap and Font Awesome for icons -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
